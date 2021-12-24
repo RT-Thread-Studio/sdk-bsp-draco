@@ -44,7 +44,7 @@ menuconfig BSP_USING_UART3
 endmenu
 
 config BSP_USING_I2C1
-    bool "Enable I2C1 (GPIO0/1)"
+    bool "Enable I2C1 (GPIO36/37)"
     select RT_USING_I2C
     default n
 
