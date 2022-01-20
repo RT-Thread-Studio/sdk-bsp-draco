@@ -142,7 +142,8 @@ config RT_USING_LWIP
 
         config RT_LWIP_MEM_ALIGNMENT
             int "Memory alignment"
-            default 4
+            default 8 if ARCH_CPU_64BIT
+            default 4 if !ARCH_CPU_64BIT
 
         config RT_LWIP_IGMP
             bool "IGMP protocol"
