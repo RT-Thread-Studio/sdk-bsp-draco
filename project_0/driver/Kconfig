@@ -79,7 +79,7 @@ if BSP_USING_SPI1
     if BSP_SPI1_USING_SS0
         config BSP_SPI1_SS0_PIN
             int "spi1 ss0 pin number"
-            default 32
+            default 25
     endif
     menuconfig BSP_SPI1_USING_SS1
         bool "SPI1 Enable SS1"
@@ -87,7 +87,7 @@ if BSP_USING_SPI1
     if BSP_SPI1_USING_SS1
         config BSP_SPI1_SS1_PIN
             int "spi1 ss1 pin number"
-            default 25
+            default 22
     endif
     menuconfig BSP_SPI1_USING_SS2
         bool "SPI1 Enable SS2"
@@ -197,6 +197,14 @@ if BSP_USING_CAMERA
         int "CMOS HREF pin number for camera"
         default 17
 endif
+
+menuconfig BSP_USING_RW007
+    bool "Enable RW007"
+    select BSP_USING_SPI1
+    select BSP_SPI1_USING_SS1
+    select PKG_USING_RW007
+    select RT_USING_WIFI
+    default n
 
 endmenu
 
