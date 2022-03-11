@@ -71,7 +71,7 @@ features_zh:
 - 128-QSPI Flash
 pkg_type: Board_Support_Packages
 pkg_vendor: RealThread
-pkg_version: 1.0.2
+pkg_version: 1.0.3
 template_projects:
 - builtin_files:
   - files_and_folders:
@@ -96,7 +96,21 @@ template_projects:
     - SConstruct
     source_path_offset: project_0
     target_path_offset: ''
-  external_files: []
+  external_files:
+  - package_name: RISC-V-GCC-KENDRYTE
+    package_type: ToolChain_Support_Packages
+    package_vendor: 'KENDRYTE'
+    package_version: 8.3.0
+    source_path_offset: ''
+    target_path_offset: ''
+    files_and_folders: []
+  - package_name: OpenOCD-KENDRYTE
+    package_type: Debugger_Support_Packages
+    package_vendor: 'KENDRYTE'
+    package_version: 0.2.3
+    source_path_offset: ''
+    target_path_offset: ''
+    files_and_folders: []
   project_description: ''
   project_name: project0
   project_type: rt-thread|@full|@latest
