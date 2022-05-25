@@ -342,13 +342,11 @@ STATIC const mp_rom_map_elem_t locals_dict_table[] =
         {MP_ROM_QSTR(MP_QSTR_height),   MP_ROM_PTR(&py_image_height_obj)},
         {MP_ROM_QSTR(MP_QSTR_format),   MP_ROM_PTR(&py_image_format_obj)},
         {MP_ROM_QSTR(MP_QSTR_size),        MP_ROM_PTR(&py_image_size_obj)},
-        {MP_ROM_QSTR(MP_QSTR_bytearray),   MP_ROM_PTR(&py_image_bytearray_obj)},
+//        {MP_ROM_QSTR(MP_QSTR_bytearray),   MP_ROM_PTR(&py_image_bytearray_obj)},
         {MP_ROM_QSTR(MP_QSTR_get_pixel),   MP_ROM_PTR(&py_image_get_pixel_obj)},
         {MP_ROM_QSTR(MP_QSTR_set_pixel),   MP_ROM_PTR(&py_image_set_pixel_obj)},
         {MP_ROM_QSTR(MP_QSTR_to_rgb565),   MP_ROM_PTR(&py_to_rgb565_obj)},
-
         {MP_ROM_QSTR(MP_QSTR_to_gray),   MP_ROM_PTR(&py_to_gray_obj)},
-
         {MP_ROM_QSTR(MP_QSTR_resize),      MP_ROM_PTR(&py_resize_obj)},
         {MP_ROM_QSTR(MP_QSTR_crop),        MP_ROM_PTR(&py_crop_obj)},
         {MP_ROM_QSTR(MP_QSTR_PIXFORMAT_INVALID),    MP_ROM_INT(PIXFORMAT_INVALID)},
