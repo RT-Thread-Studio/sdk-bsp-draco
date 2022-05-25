@@ -174,28 +174,31 @@ menuconfig BSP_USING_CAMERA
 if BSP_USING_CAMERA
     config BSP_CAMERA_SCCB_SDA_PIN
         int "SCCB SDA pin number for camera"
-        default 9
+        default 15
+    config BSP_CAMERA_SCCB_SDA0_PIN
+        int "SCCB SDA0 pin number for gc03x8"
+        default 0
     config BSP_CAMERA_SCCB_SCLK_PIN
         int "SCCB SCLK pin number for camera"
-        default 10
+        default 14
     config BSP_CAMERA_CMOS_RST_PIN
         int "CMOS RST pin number for camera"
-        default 11
+        default 13
     config BSP_CAMERA_CMOS_VSYNC_PIN
         int "CMOS VSYNC pin number for camera"
         default 12
     config BSP_CAMERA_CMOS_PWDN_PIN
         int "CMOS PWDN pin number for camera"
-        default 13
+        default 11
     config BSP_CAMERA_CMOS_XCLK_PIN
         int "CMOS XCLK pin number for camera"
-        default 14
+        default 9
     config BSP_CAMERA_CMOS_PCLK_PIN
         int "CMOS PCLK pin number for camera"
-        default 15
+        default 8
     config BSP_CAMERA_CMOS_HREF_PIN
         int "CMOS HREF pin number for camera"
-        default 17
+        default 10
 endif
 
 menuconfig BSP_USING_RW007
