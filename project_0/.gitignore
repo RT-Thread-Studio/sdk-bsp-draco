@@ -23,6 +23,10 @@ documentation/html
 *.a
 *.i
 *.d
+
+packages
+!packages/kendryte-sdk-v0.5.7
+
 dist
 dist_ide_project
 cconfig.h
