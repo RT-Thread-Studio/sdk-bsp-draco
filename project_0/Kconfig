@@ -41,6 +41,7 @@ menu "mpy-extmods"
 config PRJ_USING_EXTMODS_MISC
     bool "Enable MPY extmods"
     select PKG_USING_MICROPYTHON
+    select MICROPYTHON_USING_USEREXTMODS
     default y
 
     if PRJ_USING_EXTMODS_MISC
