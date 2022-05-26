@@ -24,7 +24,7 @@ documentation/html
 *.i
 *.d
 
-packages
+packages/*
 !packages/kendryte-sdk-v0.5.7
 
 dist
