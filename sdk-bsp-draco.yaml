@@ -81,12 +81,16 @@ template_projects:
     - .settings
     - applications
     - driver
+    - extmods
     - images
+    - mpy_rt_ai
     - Kconfig
     - link.lds
     - link_stacksize.lds
     - makefile.targets
     - packages
+    - moddefs.user.extmods.h
+    - qstrdefs.user.extmods.h
     - README.md
     - rt-thread
     - rtconfig.h
