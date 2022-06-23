@@ -1,5 +1,39 @@
 menu "Hardware Drivers Config"
 
+menu "IO Groups Power Supply Settings"
+
+    choice
+        prompt "voltage level for Group A -- Bank0~2"
+        default BSP_GROUPA_POWER_SUPPLY_1V8
+        
+        config BSP_GROUPA_POWER_SUPPLY_1V8
+            bool "1.8V"
+        config BSP_GROUPA_POWER_SUPPLY_3V3
+            bool "3.3V"
+    endchoice
+
+    choice
+        prompt "voltage level for Group B -- Bank3~5"
+        default BSP_GROUPB_POWER_SUPPLY_3V3
+        
+        config BSP_GROUPB_POWER_SUPPLY_1V8
+            bool "1.8V"
+        config BSP_GROUPB_POWER_SUPPLY_3V3
+            bool "3.3V"
+    endchoice
+
+    choice
+        prompt "voltage level for Group C -- Bank6~7"
+        default BSP_GROUPC_POWER_SUPPLY_3V3
+        
+        config BSP_GROUPC_POWER_SUPPLY_1V8
+            bool "1.8V"
+        config BSP_GROUPC_POWER_SUPPLY_3V3
+            bool "3.3V"
+    endchoice
+
+endmenu
+
 config BSP_USING_UART_HS
     bool "Enable High Speed UART"
     default y

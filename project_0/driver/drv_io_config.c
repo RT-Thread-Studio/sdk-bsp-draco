@@ -104,16 +104,35 @@ int io_config_init(void)
     int count = sizeof(io_config) / sizeof(io_config[0]);
     int i;
 
+/* IO GroupA Power Supply Setting */
+#if defined(BSP_GROUPA_POWER_SUPPLY_3V3)
+    sysctl_set_power_mode(SYSCTL_POWER_BANK0, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK1, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK2, SYSCTL_POWER_V33);
+#else
     sysctl_set_power_mode(SYSCTL_POWER_BANK0, SYSCTL_POWER_V18);
     sysctl_set_power_mode(SYSCTL_POWER_BANK1, SYSCTL_POWER_V18);
     sysctl_set_power_mode(SYSCTL_POWER_BANK2, SYSCTL_POWER_V18);
-#ifdef BSP_USING_UART2
-    // for IO-27/28
-    sysctl_set_power_mode(SYSCTL_POWER_BANK4, SYSCTL_POWER_V33);
 #endif
-#if  defined(BSP_USING_UART1) || defined(BSP_USING_UART3)
-    // for IO-20~23
+
+/* IO GroupB Power Supply Setting */
+#if defined(BSP_GROUPB_POWER_SUPPLY_3V3)
     sysctl_set_power_mode(SYSCTL_POWER_BANK3, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK4, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK5, SYSCTL_POWER_V33);
+#else
+    sysctl_set_power_mode(SYSCTL_POWER_BANK3, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK4, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK5, SYSCTL_POWER_V18);
+#endif
+
+/* IO GroupC Power Supply Setting */
+#if defined(BSP_GROUPC_POWER_SUPPLY_3V3)
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V33);
+#else
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V18);
 #endif
 
     for(i = 0; i < count; i++)
