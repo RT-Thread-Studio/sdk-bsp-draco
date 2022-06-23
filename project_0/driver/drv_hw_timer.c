@@ -4,7 +4,7 @@
 #include "timer.h"
 #include "sysctl.h"
 
-struct `
+struct khwtimer
 {
     rt_hwtimer_t time_device;
     timer_device_number_t devno;
