@@ -4,7 +4,7 @@ menu "IO Groups Power Supply Settings"
 
     choice
         prompt "voltage level for Group A -- Bank0~2"
-        default BSP_GROUPA_POWER_SUPPLY_1V8
+        default BSP_GROUPA_POWER_SUPPLY_3V3
         
         config BSP_GROUPA_POWER_SUPPLY_1V8
             bool "1.8V"

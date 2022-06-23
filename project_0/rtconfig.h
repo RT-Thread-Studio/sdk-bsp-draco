@@ -123,8 +123,8 @@
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_HWTIMER
 #define RT_USING_I2C
-#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_SPI
 #define RT_USING_SPI_MSD
@@ -293,6 +293,12 @@
 
 /* Hardware Drivers Config */
 
+/* IO Groups Power Supply Settings */
+
+#define BSP_GROUPA_POWER_SUPPLY_1V8
+#define BSP_GROUPB_POWER_SUPPLY_3V3
+#define BSP_GROUPC_POWER_SUPPLY_3V3
+/* end of IO Groups Power Supply Settings */
 #define BSP_USING_UART_HS
 
 /* General Purpose UARTs */
@@ -318,6 +324,11 @@
 #define BSP_BOARD_K210_DRACO
 #define BSP_LCD_X_MAX 240
 #define BSP_LCD_Y_MAX 320
+#define BSP_USING_TIMER0
+#define BSP_TIMER0_CHN0_ENABLE
+#define BSP_TIMER0_CHN1_ENABLE
+#define BSP_TIMER0_CHN2_ENABLE
+#define BSP_TIMER0_CHN3_ENABLE
 /* end of Hardware Drivers Config */
 #define __STACKSIZE__ 4096
 #define RT_AI_USE_K210
