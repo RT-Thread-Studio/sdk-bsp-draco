@@ -123,6 +123,8 @@
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_SPI
 #define RT_USING_SPI_MSD
@@ -248,10 +250,6 @@
 
 /* end of enhanced kernel services */
 
-/* POSIX extension functions */
-
-/* end of POSIX extension functions */
-
 /* acceleration: Assembly language or algorithmic acceleration packages */
 
 /* end of acceleration: Assembly language or algorithmic acceleration packages */
@@ -300,6 +298,9 @@
 /* General Purpose UARTs */
 
 /* end of General Purpose UARTs */
+#define BSP_USING_I2C0
+#define BSP_I2C0_SCL_PIN 18
+#define BSP_I2C0_SDA_PIN 19
 #define BSP_USING_SPI1
 #define BSP_SPI1_CLK_PIN 21
 #define BSP_SPI1_D0_PIN 19
