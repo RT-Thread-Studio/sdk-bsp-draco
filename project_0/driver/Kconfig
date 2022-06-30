@@ -235,6 +235,52 @@ if BSP_USING_LCD
 endif
 
 
+menuconfig BSP_USING_PWM
+    bool "Enable PWM"
+    select RT_USING_PWM
+    default n
+
+    if BSP_USING_PWM
+        config BSP_PWM_CHN0_ENABLE
+            bool "Enable PWM Channel 0"
+            default y
+
+            if BSP_PWM_CHN0_ENABLE
+                config BSP_PWM_CHN0_PIN
+                int "pwm channel 0 pin number"
+                default 24
+            endif
+
+        config BSP_PWM_CHN1_ENABLE
+            bool "Enable PWM Channel 1"
+            default n
+
+            if BSP_PWM_CHN1_ENABLE
+                config BSP_PWM_CHN1_PIN
+                int "pwm channel 1 pin number"
+                default 25
+            endif
+
+        config BSP_PWM_CHN2_ENABLE
+            bool "Enable PWM Channel 2"
+            default n
+
+            if BSP_PWM_CHN2_ENABLE
+                config BSP_PWM_CHN2_PIN
+                int "pwm0 channel 2 pin number"
+                default 26
+            endif
+
+        config BSP_PWM_CHN3_ENABLE
+            bool "Enable PWM Channel 3"
+            default n
+
+            if BSP_PWM_CHN3_ENABLE
+                config BSP_PWM_CHN3_PIN
+                int "pwm channel 3 pin number"
+                default 27
+            endif
+    endif
 
 menuconfig BSP_USING_TIMER0
     bool "Enable Timer0"
