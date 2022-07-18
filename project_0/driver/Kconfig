@@ -234,6 +234,53 @@ if BSP_USING_LCD
         default 320
 endif
 
+config BSP_USING_I2S0
+    bool "Enable I2S0(Play Only)"
+    select RT_USING_AUDIO
+    default y
+    if BSP_USING_I2S0
+        config BSP_I2S0_OUT_D1_PIN
+            int "I2S0 out_d1 pin number"
+            default 0
+        config BSP_I2S0_WS_PIN
+            int "I2S0 ws pin number"
+            default 1
+        config BSP_I2S0_SCLK_PIN
+            int "I2S0 sclk pin number"
+            default 2
+    endif
+
+config BSP_USING_I2S1
+    bool "Enable I2S1(Record Only)"
+    select RT_USING_AUDIO
+    default y
+    if BSP_USING_I2S1
+        config BSP_I2S1_IN_D0_PIN
+            int "I2S1 in_d0 pin number"
+            default 34
+        config BSP_I2S1_WS_PIN
+            int "I2S1 ws pin number"
+            default 33
+        config BSP_I2S1_SCLK_PIN
+            int "I2S1 sclk pin number"
+            default 35
+    endif
+
+config BSP_USING_I2S2
+    bool "Enable I2S2"
+    select RT_USING_AUDIO
+    default n
+    if BSP_USING_I2S2
+        config BSP_I2S2_OUT_D1_PIN
+            int "I2S2 out_d1 pin number"
+            default 7
+        config BSP_I2S2_WS_PIN
+            int "I2S2 ws pin number"
+            default 8
+        config BSP_I2S2_SCLK_PIN
+            int "I2S2 sclk pin number"
+            default 9
+    endif
 
 menuconfig BSP_USING_PWM
     bool "Enable PWM"
@@ -354,7 +401,7 @@ config BSP_USING_CAMERA
         config BSP_CAMERA_CMOS_HREF_PIN
             int "HREF Pin"
         default 10
-endif
+	endif
 
 menuconfig BSP_USING_RW007
     bool "Enable RW007"
@@ -363,6 +410,29 @@ menuconfig BSP_USING_RW007
     select PKG_USING_RW007
     select RT_USING_WIFI
     default n
+    
+menuconfig  BSP_USING_RTC
+    bool "Enable hardware rtc"
+    select RT_USING_RTC    
+    default n
 
+    if  BSP_USING_RTC
+        choice
+        prompt "select hardware rtc "
+        default BSP_USING_ONCHIP_RTC
+
+        config BSP_USING_SD3068
+            bool "Enable onboard rtc (sd3068) driver"
+
+        config BSP_USING_ONCHIP_RTC
+            bool "Enable onchip rtc driver"
+        endchoice
+    endif
+
+
+config BSP_USING_WDT
+    bool "Enable Watchdog"
+    select RT_USING_WDT
+    default n
 endmenu
 
