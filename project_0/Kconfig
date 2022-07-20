@@ -62,5 +62,9 @@ config PRJ_USING_EXTMODS_MISC
         config PRJ_USING_RT_AK_EXMODS
             bool "Enable RT-AK MPY module"
             default y
+			
+		config EXTMODS_K210_I2S
+            bool "Enable I2S MPY module"
+            default y
     endif
 endmenu

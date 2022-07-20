@@ -229,6 +229,38 @@
 /* XML: Extensible Markup Language */
 
 /* end of XML: Extensible Markup Language */
+#define PKG_USING_MICROPYTHON
+
+/* Hardware Module */
+
+#define MICROPYTHON_USING_MACHINE_I2C
+#define MICROPYTHON_USING_MACHINE_SPI
+#define MICROPYTHON_USING_MACHINE_UART
+#define MICROPYTHON_USING_MACHINE_RTC
+#define MICROPYTHON_USING_MACHINE_LCD
+/* end of Hardware Module */
+
+/* System Module */
+
+#define MICROPYTHON_USING_UOS
+#define MICROPYTHON_USING_FILE_SYNC_VIA_IDE
+/* end of System Module */
+
+/* Tools Module */
+
+/* end of Tools Module */
+
+/* Network Module */
+
+/* end of Network Module */
+
+/* User Extended Module */
+
+#define MICROPYTHON_USING_USEREXTMODS
+/* end of User Extended Module */
+#define PKG_MICROPYTHON_HEAP_SIZE 1000000
+#define PKG_USING_MICROPYTHON_V11300
+#define PKG_MICROPYTHON_VER_NUM 0x11300
 /* end of language packages */
 
 /* multimedia packages */
@@ -309,6 +341,9 @@
 
 /* General Purpose UARTs */
 
+#define BSP_USING_UART1
+#define BSP_UART1_TXD_PIN 6
+#define BSP_UART1_RXD_PIN 7
 /* end of General Purpose UARTs */
 #define BSP_USING_I2C0
 #define BSP_I2C0_SCL_PIN 18
@@ -343,6 +378,16 @@
 #define BSP_TIMER0_CHN1_ENABLE
 #define BSP_TIMER0_CHN2_ENABLE
 #define BSP_TIMER0_CHN3_ENABLE
+#define BSP_USING_CAMERA
+#define BSP_CAMERA_SCCB_SDA_PIN 15
+#define BSP_CAMERA_SCCB_SDA0_PIN 0
+#define BSP_CAMERA_SCCB_SCLK_PIN 14
+#define BSP_CAMERA_CMOS_RST_PIN 13
+#define BSP_CAMERA_CMOS_VSYNC_PIN 12
+#define BSP_CAMERA_CMOS_PWDN_PIN 11
+#define BSP_CAMERA_CMOS_XCLK_PIN 9
+#define BSP_CAMERA_CMOS_PCLK_PIN 8
+#define BSP_CAMERA_CMOS_HREF_PIN 10
 #define BSP_USING_RTC
 #define BSP_USING_ONCHIP_RTC
 #define BSP_USING_WDT
@@ -352,6 +397,11 @@
 
 /* mpy-extmods */
 
+#define PRJ_USING_EXTMODS_MISC
+#define EXTMODS_MISC_USING_K210
+#define EXTMODS_K210_LCDCTL
+#define EXTMODS_K210_DVP
+#define EXTMODS_K210_I2S
 /* end of mpy-extmods */
 
 #endif

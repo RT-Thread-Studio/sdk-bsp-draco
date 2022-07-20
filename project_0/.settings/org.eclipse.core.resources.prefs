@@ -1,4 +1,4 @@
 autoUpdatePkgs=true
 eclipse.preferences.version=1
 encoding//driver/drv_io_config.c=UTF-8
-rtt-studio.preferences.kflash.serial.port=COM15
+rtt-studio.preferences.kflash.serial.port=COM14

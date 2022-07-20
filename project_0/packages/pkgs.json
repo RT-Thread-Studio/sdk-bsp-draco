@@ -1,5 +1,10 @@
 [
  {
+  "path": "/packages/language/micropython", 
+  "ver": "v1.13.0", 
+  "name": "MICROPYTHON"
+ }, 
+ {
   "path": "/packages/peripherals/kendryte-sdk", 
   "ver": "v0.5.7", 
   "name": "KENDRYTE_SDK"
