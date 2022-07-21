@@ -252,7 +252,6 @@
 #define MICROPYTHON_USING_USEREXTMODS
 /* end of User Extended Module */
 #define PKG_MICROPYTHON_HEAP_SIZE 8192
-#define MICROPYTHON_USING_FLOAT_IMPL_FLOAT
 #define PKG_USING_MICROPYTHON_V11300
 #define PKG_MICROPYTHON_VER_NUM 0x11300
 /* end of language packages */
@@ -392,12 +391,6 @@
 
 /* mpy-extmods */
 
-#define PRJ_USING_EXTMODS_MISC
-#define EXTMODS_MISC_USING_K210
-#define EXTMODS_K210_LCDCTL
-#define EXTMODS_K210_DVP
-#define EXTMODS_K210_I2S
-#define PRJ_USING_RT_AK_EXMODS
 /* end of mpy-extmods */
 
 #endif

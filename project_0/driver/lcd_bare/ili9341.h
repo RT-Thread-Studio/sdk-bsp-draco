@@ -15,7 +15,7 @@
 
 #ifndef _ILI9341_H_
 #define _ILI9341_H_
-#include <board_config.h>
+#include <project_0/driver/lcd_bare/board_config.h>
 #include <stdint.h>
 #if LCD_USING_ILI9341
 /* clang-format off */
