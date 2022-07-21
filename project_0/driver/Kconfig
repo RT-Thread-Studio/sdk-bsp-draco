@@ -374,6 +374,14 @@ config BSP_USING_CAMERA
     default n
 
     if BSP_USING_CAMERA
+        choice
+            prompt "Select camera type"
+            default CAMERA_USING_GC0308
+
+            config CAMERA_USING_GC0308
+                bool "Camera using gc0308"
+        endchoice
+
 	    config BSP_CAMERA_SCCB_SDA_PIN
 	        int "SCCB SDA pin number for camera"
 	        default 15
