@@ -1,3 +1,8 @@
+
+#ifdef EXTMODS_K210_I2S
+#include "i2s.h"
+#include "dmac.h"
+#include "rtdevice.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -7,12 +12,6 @@
 #include "py/obj.h"
 #include "py/runtime.h"
 #include "py/mphal.h"
-
-#ifdef EXTMODS_K210_I2S
-#include "i2s.h"
-#include "dmac.h"
-#include "rtdevice.h"
-
 #define RX_FRAME_LEN 512
 
 typedef struct

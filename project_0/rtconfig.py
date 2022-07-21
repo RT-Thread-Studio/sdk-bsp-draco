@@ -23,7 +23,6 @@ else:
 if os.getenv('RTT_EXEC_PATH'):
     EXEC_PATH = os.getenv('RTT_EXEC_PATH')
 
-EXEC_PATH   = r'D:\gcc-toolchain\xpack-riscv-none-embed-gcc-8.3.0-1.9\bin'
 BUILD = 'release'
 
 if PLATFORM == 'gcc':
