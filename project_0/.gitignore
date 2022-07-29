@@ -25,7 +25,7 @@ documentation/html
 *.d
 
 packages/*
-!packages/kendryte-sdk-v0.5.7
+!packages/kendryte-sdk
 
 dist
 dist_ide_project
