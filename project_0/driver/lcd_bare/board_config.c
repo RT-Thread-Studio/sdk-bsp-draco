@@ -1,4 +1,4 @@
-#include <board_config.h>
+#include <project_0/driver/lcd_bare/board_config.h>
 
 void io_mux_init(void) {
 #if BOARD_LICHEEDAN || YB_DKA01

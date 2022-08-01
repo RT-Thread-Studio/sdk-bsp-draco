@@ -14,7 +14,7 @@
  */
 #include <string.h>
 #include <unistd.h>
-#include "lcd.h"
+#include "..\lcd.h"
 #if LCD_USING_ILI9341
 #include "ili9341.h"
 #include "font.h"

@@ -84,6 +84,9 @@ extern "C" {
 #include "drivers/sdio.h"
 #endif /* RT_USING_SDIO */
 
+#ifdef RT_USING_RTC
+#include "drivers/rtc.h"
+#endif /* RT_USING_RTC */
 
 #ifdef RT_USING_WDT
 #include "drivers/watchdog.h"

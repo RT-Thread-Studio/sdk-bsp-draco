@@ -2,7 +2,7 @@
 #define _LCD_H_
 
 #include <stdint.h>
-#include <board_config.h>
+#include <project_0/driver/lcd_bare/board_config.h>
 #ifndef BSP_USING_LCD
 /* clang-format off */
 #define LCD_X_MAX   (240)

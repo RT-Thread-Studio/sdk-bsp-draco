@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #include "dvp.h"
 #include "fpioa.h"
 #include "i2c.h"
@@ -19,12 +20,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <rtthread.h>
 #include "syslog.h"
-#include "board_config.h"
 #include <stdint.h>
-#if CAMERA_USING_GC0308
-
 // #define DVP_PIN_SDA 15
 // #define DVP_PIN_SDA0 0
 // #define DVP_PIN_SCL 14
@@ -695,8 +693,8 @@ void i2c_master_init(uint8_t num)
 {
     if (num)                                            //1,GC0380  RGB
     {
-        fpioa_set_function(DVP_PIN_SDA, FUNC_I2C1_SDA);
-        fpioa_set_function(DVP_PIN_SCL, FUNC_I2C1_SCLK);
+        fpioa_set_function(BSP_CAMERA_SCCB_SDA_PIN, FUNC_I2C1_SDA);
+        fpioa_set_function(BSP_CAMERA_SCCB_SCLK_PIN, FUNC_I2C1_SCLK);
     }
     #if 0
     else
@@ -1999,4 +1997,3 @@ int rt_hw_gc0308_init(void)
 }
 INIT_DEVICE_EXPORT(rt_hw_gc0308_init);
 
-#endif //CAMERA_USING_GC0308
