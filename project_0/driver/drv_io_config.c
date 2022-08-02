@@ -81,20 +81,62 @@ static struct io_config
     IOCONFIG(BSP_UART3_TXD_PIN, FUNC_UART3_TX),
     IOCONFIG(BSP_UART3_RXD_PIN, FUNC_UART3_RX),
 #endif
+
+#ifdef RT_USING_AUDIO
+#ifdef BSP_USING_I2S0
+    IOCONFIG(BSP_I2S0_OUT_D1_PIN, FUNC_I2S0_OUT_D1),
+    IOCONFIG(BSP_I2S0_WS_PIN, FUNC_I2S0_WS),
+    IOCONFIG(BSP_I2S0_SCLK_PIN, FUNC_I2S0_SCLK),
+#endif
+#ifdef BSP_USING_I2S1
+    IOCONFIG(BSP_I2S1_IN_D0_PIN, FUNC_I2S1_IN_D0),
+    IOCONFIG(BSP_I2S1_WS_PIN, FUNC_I2S1_WS),
+    IOCONFIG(BSP_I2S1_SCLK_PIN, FUNC_I2S1_SCLK),
+#endif
+#endif
+
+#ifdef BSP_USING_I2C0
+    IOCONFIG(BSP_I2C0_SCL_PIN, FUNC_I2C0_SCLK),
+    IOCONFIG(BSP_I2C0_SDA_PIN, FUNC_I2C0_SDA),
+#endif
+#ifdef BSP_USING_I2C1
+    IOCONFIG(BSP_I2C1_SCL_PIN, FUNC_I2C1_SCLK),
+    IOCONFIG(BSP_I2C1_SDA_PIN, FUNC_I2C1_SDA),
+#endif
+#ifdef BSP_USING_I2C2
+    IOCONFIG(BSP_I2C2_SCL_PIN, FUNC_I2C2_SCLK),
+    IOCONFIG(BSP_I2C2_SDA_PIN, FUNC_I2C2_SDA),
+#endif
+
+#ifdef BSP_PWM_CHN0_ENABLE
+    IOCONFIG(BSP_PWM_CHN0_PIN, FUNC_TIMER2_TOGGLE1),
+#endif
+#ifdef BSP_PWM_CHN1_ENABLE
+    IOCONFIG(BSP_PWM_CHN1_PIN, FUNC_TIMER2_TOGGLE2),
+#endif
+#ifdef BSP_PWM_CHN2_ENABLE
+    IOCONFIG(BSP_PWM_CHN2_PIN, FUNC_TIMER2_TOGGLE3),
+#endif
+#ifdef BSP_PWM_CHN3_ENABLE
+    IOCONFIG(BSP_PWM_CHN3_PIN, FUNC_TIMER2_TOGGLE4),
+#endif
+
 };
+
+
 
 static int print_io_config()
 {
     int i;
     rt_kprintf("IO Configuration Table\n");
-    rt_kprintf("┌───────┬────────────────────────┐\n");
-    rt_kprintf("│Pin    │Function                │\n");
-    rt_kprintf("├───────┼────────────────────────┤\n");
+    rt_kprintf("鈹屸攢鈹�鈹�鈹�鈹�鈹�鈹�鈹攢鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹怽n");
+    rt_kprintf("鈹侾in    鈹侳unction                鈹俓n");
+    rt_kprintf("鈹溾攢鈹�鈹�鈹�鈹�鈹�鈹�鈹尖攢鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹n");
     for(i = 0; i < sizeof io_config / sizeof io_config[0]; i++)
     {
-        rt_kprintf("│%-2d     │%-24.24s│\n", io_config[i].io_num, io_config[i].func_name);
+        rt_kprintf("鈹�%-2d     鈹�%-24.24s鈹俓n", io_config[i].io_num, io_config[i].func_name);
     }
-    rt_kprintf("└───────┴────────────────────────┘\n");
+    rt_kprintf("鈹斺攢鈹�鈹�鈹�鈹�鈹�鈹�鈹粹攢鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹�鈹榎n");
     return 0;
 }
 MSH_CMD_EXPORT_ALIAS(print_io_config, io, print io config);
@@ -104,16 +146,35 @@ int io_config_init(void)
     int count = sizeof(io_config) / sizeof(io_config[0]);
     int i;
 
+/* IO GroupA Power Supply Setting */
+#if defined(BSP_GROUPA_POWER_SUPPLY_3V3)
+    sysctl_set_power_mode(SYSCTL_POWER_BANK0, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK1, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK2, SYSCTL_POWER_V33);
+#else
     sysctl_set_power_mode(SYSCTL_POWER_BANK0, SYSCTL_POWER_V18);
     sysctl_set_power_mode(SYSCTL_POWER_BANK1, SYSCTL_POWER_V18);
     sysctl_set_power_mode(SYSCTL_POWER_BANK2, SYSCTL_POWER_V18);
-#ifdef BSP_USING_UART2
-    // for IO-27/28
-    sysctl_set_power_mode(SYSCTL_POWER_BANK4, SYSCTL_POWER_V33);
 #endif
-#if  defined(BSP_USING_UART1) || defined(BSP_USING_UART3)
-    // for IO-20~23
+
+/* IO GroupB Power Supply Setting */
+#if defined(BSP_GROUPB_POWER_SUPPLY_3V3)
     sysctl_set_power_mode(SYSCTL_POWER_BANK3, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK4, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK5, SYSCTL_POWER_V33);
+#else
+    sysctl_set_power_mode(SYSCTL_POWER_BANK3, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK4, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK5, SYSCTL_POWER_V18);
+#endif
+
+/* IO GroupC Power Supply Setting */
+#if defined(BSP_GROUPC_POWER_SUPPLY_3V3)
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V33);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V33);
+#else
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V18);
 #endif
 
     for(i = 0; i < count; i++)

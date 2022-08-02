@@ -93,6 +93,7 @@ template_projects:
     - qstrdefs.user.extmods.h
     - README.md
     - rt-thread
+    - samples
     - rtconfig.h
     - rtconfig.py
     - rtconfig_preinc.h

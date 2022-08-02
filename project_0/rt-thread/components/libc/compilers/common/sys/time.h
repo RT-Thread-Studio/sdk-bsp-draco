@@ -65,6 +65,7 @@ struct timespec
 #endif
 
 int stime(const time_t *t);
+char* ctime(const time_t *tim_p);
 time_t timegm(struct tm * const t);
 int gettimeofday(struct timeval *tv, struct timezone *tz);
 int settimeofday(const struct timeval *tv, const struct timezone *tz);

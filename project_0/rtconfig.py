@@ -15,7 +15,7 @@ if os.getenv('RTT_CC'):
 
 if  CROSS_TOOL == 'gcc':
     PLATFORM    = 'gcc'
-    EXEC_PATH   = r'D:\K210\xpack-riscv-none-embed-gcc-8.3.0-1.2-win32-x64\xpack-riscv-none-embed-gcc-8.3.0-1.2\bin'
+    EXEC_PATH   = r'D:\gcc-toolchain\xpack-riscv-none-embed-gcc-8.3.0-1.9\bin'
 else:
     print('Please make sure your toolchains is GNU GCC!')
     exit(0)

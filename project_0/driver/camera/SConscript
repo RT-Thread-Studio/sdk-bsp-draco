@@ -1,9 +1,11 @@
 from building import *
 
 cwd     = GetCurrentDir()
-src     = Glob('*.c') + Glob('*.cpp')
+# src     = Glob('*.c') + Glob('*.cpp')
+src = []
 CPPPATH = [cwd]
-
+if GetDepend('CAMERA_USING_GC0308'):
+    src += ['drv_gc0308.c']
 group = DefineGroup('Drivers', src, depend = ['BSP_USING_CAMERA'], CPPPATH = CPPPATH)
 
 Return('group')

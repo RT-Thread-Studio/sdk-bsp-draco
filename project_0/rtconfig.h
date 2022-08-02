@@ -123,7 +123,11 @@
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_HWTIMER
+#define RT_USING_I2C
 #define RT_USING_PIN
+#define RT_USING_WDT
+#define RT_USING_RTC
 #define RT_USING_SPI
 #define RT_USING_SPI_MSD
 #define RT_USING_SFUD
@@ -131,6 +135,10 @@
 #define RT_SFUD_USING_FLASH_INFO_TABLE
 #define RT_SFUD_SPI_MAX_HZ 50000000
 #define RT_DEBUG_SFUD
+#define RT_USING_AUDIO
+#define RT_AUDIO_REPLAY_MP_BLOCK_SIZE 4096
+#define RT_AUDIO_REPLAY_MP_BLOCK_COUNT 2
+#define RT_AUDIO_RECORD_PIPE_SIZE 2048
 
 /* Using USB */
 
@@ -248,10 +256,6 @@
 
 /* end of enhanced kernel services */
 
-/* POSIX extension functions */
-
-/* end of POSIX extension functions */
-
 /* acceleration: Assembly language or algorithmic acceleration packages */
 
 /* end of acceleration: Assembly language or algorithmic acceleration packages */
@@ -267,9 +271,13 @@
 
 /* peripheral libraries and drivers */
 
+
+/* Kendryte SDK */
+
 #define PKG_USING_KENDRYTE_SDK
 #define PKG_USING_KENDRYTE_SDK_V057
 #define PKG_KENDRYTE_SDK_VERNUM 0x0057
+/* end of Kendryte SDK */
 /* end of peripheral libraries and drivers */
 
 /* AI packages */
@@ -295,11 +303,23 @@
 
 /* Hardware Drivers Config */
 
+/* IO Groups Power Supply Settings */
+
+#define BSP_GROUPA_POWER_SUPPLY_1V8
+#define BSP_GROUPB_POWER_SUPPLY_3V3
+#define BSP_GROUPC_POWER_SUPPLY_3V3
+/* end of IO Groups Power Supply Settings */
 #define BSP_USING_UART_HS
 
 /* General Purpose UARTs */
 
+#define BSP_USING_UART1
+#define BSP_UART1_TXD_PIN 6
+#define BSP_UART1_RXD_PIN 7
 /* end of General Purpose UARTs */
+#define BSP_USING_I2C0
+#define BSP_I2C0_SCL_PIN 18
+#define BSP_I2C0_SDA_PIN 19
 #define BSP_USING_SPI1
 #define BSP_SPI1_CLK_PIN 21
 #define BSP_SPI1_D0_PIN 19

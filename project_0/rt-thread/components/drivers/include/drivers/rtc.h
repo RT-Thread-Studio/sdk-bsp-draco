@@ -14,7 +14,7 @@
 #define __RTC_H__
 
 #include <rtdef.h>
-
+#include <time.h>
 #define RT_DEVICE_CTRL_RTC_GET_TIME     0x20            /**< get second time */
 #define RT_DEVICE_CTRL_RTC_SET_TIME     0x21            /**< set second time */
 #define RT_DEVICE_CTRL_RTC_GET_TIMEVAL  0x22            /**< get timeval for gettimeofday */
