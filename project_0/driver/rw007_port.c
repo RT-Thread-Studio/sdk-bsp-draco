@@ -11,10 +11,6 @@
 
 #include <rtthread.h>
 
-#define RW007_RST_PIN 23
-#define RW007_INT_BUSY_PIN 24
-#define RW007_SPIDEV_NAME "spi11"
-
 #ifdef BSP_USING_RW007
 #include <rtdevice.h>
 #include <drv_spi.h>

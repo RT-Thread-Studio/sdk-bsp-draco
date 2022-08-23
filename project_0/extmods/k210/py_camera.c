@@ -7,7 +7,7 @@
 #include "py/binary.h"
 
 #ifdef EXTMODS_K210_DVP
-#include "py_image.h"
+#include "py_img.h"
 
 
 typedef struct
@@ -140,8 +140,8 @@ static mp_obj_t k210_cam_snapshot(mp_obj_t self)
         mp_raise_ValueError("framebuffer not init");
     }
     
-    dis_data = py_image(320, 240, PIXFORMAT_RGB565, 320*240*2, obj->dis);
-    ai_data = py_image(320, 240, PIXFORMAT_RGB888_CHW, 320*240*3, obj->ai);
+    dis_data = py_img(320, 240, PIXFORMAT_RGB565, 320*240*2, obj->dis);
+    ai_data = py_img(320, 240, PIXFORMAT_RGB888_CHW, 320*240*3, obj->ai);
     ret = k210sensor_read(s, obj->dis, obj->ai);
     if (ret < 0) 
     {
