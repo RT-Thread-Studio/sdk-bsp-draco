@@ -71,7 +71,7 @@ features_zh:
 - 128-QSPI Flash
 pkg_type: Board_Support_Packages
 pkg_vendor: RealThread
-pkg_version: 1.0.7
+pkg_version: 1.0.8
 template_projects:
 - builtin_files:
   - files_and_folders:
