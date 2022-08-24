@@ -10,7 +10,7 @@
  */
 #ifndef __PY_HELPER_H__
 #define __PY_HELPER_H__
-#include "imlib.h"
+#include "imglib/imlib.h"
 extern const mp_obj_fun_builtin_var_t py_func_unavailable_obj;
 image_t *py_helper_arg_to_image_mutable(const mp_obj_t arg);
 image_t *py_helper_arg_to_image_not_compressed(const mp_obj_t arg);

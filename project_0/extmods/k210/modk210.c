@@ -20,7 +20,7 @@ extern const mp_obj_type_t k210_cam_type;
 #endif
 
 #if (defined(EXTMODS_K210_DVP))
-extern const mp_obj_type_t py_image_type;
+extern const mp_obj_type_t py_img_type;
 #endif
 #ifdef EXTMODS_K210_SHA256
 extern const mp_obj_type_t k210_sha256_type;
@@ -47,7 +47,7 @@ STATIC const mp_rom_map_elem_t k210_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR_camera),  MP_ROM_PTR(&k210_cam_type) },
 #endif
 #if (defined(EXTMODS_K210_DVP))
-    { MP_ROM_QSTR(MP_QSTR_Image),  MP_ROM_PTR(&py_image_type) },
+    { MP_ROM_QSTR(MP_QSTR_Image),  MP_ROM_PTR(&py_img_type) },
 #endif
 #ifdef EXTMODS_K210_SHA256
     { MP_ROM_QSTR(MP_QSTR_sha256),  MP_ROM_PTR(&k210_sha256_type) },

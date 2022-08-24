@@ -189,3 +189,16 @@ int io_config_init(void)
 }
 INIT_BOARD_EXPORT(io_config_init);
 
+int io_config_used(int io_num)
+{
+    int count = sizeof(io_config) / sizeof(io_config[0]);
+    int i;
+
+    for(i = 0; i < count; i++)
+    {
+        if (io_config[i].io_num == io_num)
+            break;
+    }
+
+    return (i < count);
+}

@@ -14,7 +14,7 @@
  */
 #include <stddef.h>
 #include "dmac.h"
-#include "fft.h"
+#include "ffth.h"
 #include "sysctl.h"
 #include "utils.h"
 

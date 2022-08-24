@@ -13,7 +13,7 @@
 #include "py_helper.h"
 #include "py_assert.h"
 
-extern void *py_image_cobj(mp_obj_t img_obj);
+extern void *py_img_cobj(mp_obj_t img_obj);
 
 mp_obj_t py_func_unavailable(uint n_args, const mp_obj_t *args, mp_map_t *kw_args)
 {
@@ -24,21 +24,21 @@ MP_DEFINE_CONST_FUN_OBJ_KW(py_func_unavailable_obj, 0, py_func_unavailable);
 
 image_t *py_helper_arg_to_image_mutable(const mp_obj_t arg)
 {
-    image_t *arg_img = py_image_cobj(arg);
+    image_t *arg_img = py_img_cobj(arg);
     PY_ASSERT_TRUE_MSG(arg_img->is_mutable, "Image is not mutable!");
     return arg_img;
 }
 
 image_t *py_helper_arg_to_image_not_compressed(const mp_obj_t arg)
 {
-    image_t *arg_img = py_image_cobj(arg);
+    image_t *arg_img = py_img_cobj(arg);
     PY_ASSERT_FALSE_MSG(arg_img->is_compressed, "Image is compressed!");
     return arg_img;
 }
 
 image_t *py_helper_arg_to_image_grayscale(const mp_obj_t arg)
 {
-    image_t *arg_img = py_image_cobj(arg);
+    image_t *arg_img = py_img_cobj(arg);
     PY_ASSERT_TRUE_MSG(arg_img->pixfmt == PIXFORMAT_GRAYSCALE, "Image is not grayscale!");
     return arg_img;
 }

@@ -380,6 +380,12 @@ config BSP_USING_CAMERA
 
             config CAMERA_USING_GC0308
                 bool "Camera using gc0308"
+            
+            config CAMERA_USING_OV2640
+                bool "Camera using ov2640"
+            
+            config CAMERA_USING_OTHER
+                bool "Camera using other"
         endchoice
 
 	    config BSP_CAMERA_SCCB_SDA_PIN
@@ -411,14 +417,35 @@ config BSP_USING_CAMERA
         default 10
 	endif
 
-menuconfig BSP_USING_RW007
-    bool "Enable RW007"
+# menuconfig BSP_USING_RW007
+#     bool "Enable RW007"
+#     select BSP_USING_SPI1
+#     select BSP_SPI1_USING_SS1
+#     select PKG_USING_RW007
+#     select RT_USING_WIFI
+#     default n
+config BSP_USING_RW007
+    bool "Enable RW007 wifi module"
     select BSP_USING_SPI1
     select BSP_SPI1_USING_SS1
     select PKG_USING_RW007
     select RT_USING_WIFI
     default n
-    
+
+    if BSP_USING_RW007
+        config RW007_SPIDEV_NAME
+            string "the SPIDEV rw007 driver on"
+            default "spi11"
+
+        config RW007_RST_PIN
+            int "reset PIN"
+            default 23
+
+        config RW007_INT_BUSY_PIN
+            int "INT and BUSY status pin"
+            default 24
+    endif
+
 menuconfig  BSP_USING_RTC
     bool "Enable hardware rtc"
     select RT_USING_RTC    
