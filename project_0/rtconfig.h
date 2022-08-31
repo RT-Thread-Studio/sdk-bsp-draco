@@ -315,6 +315,33 @@
 /* XML: Extensible Markup Language */
 
 /* end of XML: Extensible Markup Language */
+#define PKG_USING_MICROPYTHON
+
+/* Hardware Module */
+
+/* end of Hardware Module */
+
+/* System Module */
+
+#define MICROPYTHON_USING_UOS
+#define MICROPYTHON_USING_FILE_SYNC_VIA_IDE
+/* end of System Module */
+
+/* Tools Module */
+
+/* end of Tools Module */
+
+/* Network Module */
+
+/* end of Network Module */
+
+/* User Extended Module */
+
+#define MICROPYTHON_USING_USEREXTMODS
+/* end of User Extended Module */
+#define PKG_MICROPYTHON_HEAP_SIZE 2000000
+#define PKG_USING_MICROPYTHON_V11300
+#define PKG_MICROPYTHON_VER_NUM 0x11300
 /* end of language packages */
 
 /* multimedia packages */
@@ -425,6 +452,8 @@
 
 /* mpy-extmods */
 
+#define PRJ_USING_EXTMODS_MISC
+#define PRJ_USING_RT_AK_EXMODS
 /* end of mpy-extmods */
 
 #endif

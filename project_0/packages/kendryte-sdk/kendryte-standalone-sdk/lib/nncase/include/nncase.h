@@ -20,6 +20,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+/* for RT-AK Micropython */
+size_t km_inputs_size(kpu_model_context_t *ctx);
+size_t km_outputs_size(kpu_model_context_t *ctx);
+size_t km_inputs_n_bytes(kpu_model_context_t *ctx, size_t index);
+size_t km_outputs_n_bytes(kpu_model_context_t *ctx, size_t index);
+
 
 int nncase_load_kmodel(kpu_model_context_t *ctx, const uint8_t *buffer);
 int nncase_get_output(kpu_model_context_t *ctx, uint32_t index, uint8_t **data, size_t *size);

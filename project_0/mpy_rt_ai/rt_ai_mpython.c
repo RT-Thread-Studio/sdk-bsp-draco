@@ -17,6 +17,9 @@
 #include "py/qstr.h"
 #include "py/obj.h"
 #include "py/runtime.h"
+#include "model_paser_helper.h"
+
+#define __debug(_val) mp_printf(&mp_plat_print,"%s,%d," #_val "=%d\n",__FILE__,__LINE__,_val);
 
 typedef struct
 {
@@ -57,6 +60,19 @@ STATIC mp_obj_t py_rt_ai_init(size_t n_args, const mp_obj_t *pos_args, mp_map_t 
     if(stat){
         mp_raise_OSError(stat);
     }
+    if(!handle->info.input_n && !handle->info.input_n){
+        handle->info.input_n = inputs_size(handle); __debug(handle->info.input_n);
+        handle->info.output_n = outputs_size(handle); __debug(handle->info.output_n);
+
+        for(int i=0; i<handle->info.input_n; i++){
+                handle->info.input_n_stack[i] = inputs_n_bytes(handle, i); __debug(handle->info.input_n_stack[i]);
+        }
+        for(int i=0; i<handle->info.output_n; i++){
+                handle->info.output_n_stack[i] = outputs_n_bytes(handle, i);__debug(handle->info.output_n_stack[i]);
+        }
+    }
+
+
     return mp_const_none;
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_KW(py_rt_ai_init_obj, 1, py_rt_ai_init);
@@ -179,9 +195,30 @@ STATIC mp_obj_t py_rt_ai_find(mp_obj_t name){
 }
 static MP_DEFINE_CONST_FUN_OBJ_1(py_rt_ai_find_obj, py_rt_ai_find);
 
+STATIC  mp_obj_t py_rt_ai_load(mp_obj_t buffer, mp_obj_t name){
+    if(mp_obj_get_type(name) != &mp_type_str){
+        mp_raise_TypeError("please type model name str!");
+    }
+    mp_buffer_info_t bufinfo;
+    if (!mp_get_buffer(buffer, &bufinfo, MP_BUFFER_READ)){
+        mp_raise_ValueError("get kmodel buffer error!");
+    }
+
+    const char *model_name = mp_obj_str_get_str(name);
+    rt_ai_t handle = backend_k210_kpu_constructor_helper(bufinfo.buf, model_name);
+    py_model_obj_t *model_obj = m_new_obj(py_model_obj_t);
+    model_obj->base.type = &py_model_type;
+    model_obj->handle = handle;
+    model_obj->buf = RT_NULL;
+
+    return MP_OBJ_FROM_PTR(model_obj);
+}
+static MP_DEFINE_CONST_FUN_OBJ_2(py_rt_ai_load_obj, py_rt_ai_load);
+
 STATIC const mp_rom_map_elem_t rt_ak_module_globals_table[] = {
         { MP_OBJ_NEW_QSTR(MP_QSTR___name__), MP_OBJ_NEW_QSTR(MP_QSTR_RT_AK) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_model), MP_ROM_PTR(&py_model_type)},
+        { MP_OBJ_NEW_QSTR(MP_QSTR_ai_load), MP_ROM_PTR(&py_rt_ai_load_obj) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_ai_find), MP_ROM_PTR(&py_rt_ai_find_obj) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_ai_init), MP_ROM_PTR(&py_rt_ai_init_obj) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_ai_run), MP_ROM_PTR(&py_rt_ai_run_obj) },

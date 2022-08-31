@@ -44,6 +44,10 @@ void kpu_upload_dma(dmac_channel_number_t dma_ch, const uint8_t *src, uint8_t *d
 class nncase_context
 {
 public:
+    friend size_t km_inputs_size(kpu_model_context_t *ctx);
+    friend size_t km_outputs_size(kpu_model_context_t *ctx);
+    friend size_t km_inputs_n_bytes(kpu_model_context_t *ctx, size_t index);
+    friend size_t km_outputs_n_bytes(kpu_model_context_t *ctx, size_t index);
     int load_kmodel(const uint8_t *buffer)
     {
         int ret = interpreter_.try_load_model(buffer) ? 0 : -1;
@@ -181,3 +185,27 @@ int nncase_run_kmodel(kpu_model_context_t *ctx, const uint8_t *src, dmac_channel
     auto nnctx = reinterpret_cast<nncase_context *>(ctx->nncase_ctx);
     return nnctx->run_kmodel(src, dma_ch, done_callback, userdata);
 }
+
+/* for RT-AK Micropython */
+size_t km_inputs_size(kpu_model_context_t *ctx){
+    auto nnctx = reinterpret_cast<nncase_context *>(ctx->nncase_ctx);
+    return nnctx->interpreter_.inputs_size();
+}
+
+size_t km_outputs_size(kpu_model_context_t *ctx){
+    auto nnctx = reinterpret_cast<nncase_context *>(ctx->nncase_ctx);
+    return nnctx->interpreter_.outputs_size();
+}
+
+size_t km_inputs_n_bytes(kpu_model_context_t *ctx, size_t index){
+    auto nnctx = reinterpret_cast<nncase_context *>(ctx->nncase_ctx);
+    auto mem = nnctx->interpreter_.input_at(index);
+    return mem.size;
+}
+
+size_t km_outputs_n_bytes(kpu_model_context_t *ctx, size_t index){
+    auto nnctx = reinterpret_cast<nncase_context *>(ctx->nncase_ctx);
+    auto mem = nnctx->interpreter_.output_at(index);
+    return mem.size;
+}
+
