@@ -215,6 +215,16 @@ STATIC  mp_obj_t py_rt_ai_load(mp_obj_t buffer, mp_obj_t name){
 }
 static MP_DEFINE_CONST_FUN_OBJ_2(py_rt_ai_load_obj, py_rt_ai_load);
 
+STATIC mp_obj_t py_rt_ai_free(mp_obj_t _obj){
+    if(mp_obj_get_type(_obj) != & py_model_type){
+            mp_raise_TypeError("model type err!");
+      }
+    py_model_obj_t *model_obj = (py_model_obj_t*)_obj;
+    backend_k210_kpu_kmodel_free(model_obj->handle);
+    return mp_const_none;
+}
+static MP_DEFINE_CONST_FUN_OBJ_1(py_rt_ai_free_obj, py_rt_ai_free);
+
 STATIC const mp_rom_map_elem_t rt_ak_module_globals_table[] = {
         { MP_OBJ_NEW_QSTR(MP_QSTR___name__), MP_OBJ_NEW_QSTR(MP_QSTR_RT_AK) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_model), MP_ROM_PTR(&py_model_type)},
@@ -223,6 +233,7 @@ STATIC const mp_rom_map_elem_t rt_ak_module_globals_table[] = {
         { MP_OBJ_NEW_QSTR(MP_QSTR_ai_init), MP_ROM_PTR(&py_rt_ai_init_obj) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_ai_run), MP_ROM_PTR(&py_rt_ai_run_obj) },
         { MP_OBJ_NEW_QSTR(MP_QSTR_ai_output), MP_ROM_PTR(&py_rt_ai_output_obj) },
+        { MP_OBJ_NEW_QSTR(MP_QSTR_ai_free), MP_ROM_PTR(&py_rt_ai_free_obj) },
 };
 
 STATIC MP_DEFINE_CONST_DICT(rt_ak_module_globals, rt_ak_module_globals_table);

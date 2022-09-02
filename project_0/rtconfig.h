@@ -319,6 +319,7 @@
 
 /* Hardware Module */
 
+#define MICROPYTHON_USING_MACHINE_LCD
 /* end of Hardware Module */
 
 /* System Module */
@@ -446,6 +447,17 @@
 #define BSP_BOARD_K210_DRACO
 #define BSP_LCD_X_MAX 240
 #define BSP_LCD_Y_MAX 320
+#define BSP_USING_CAMERA
+#define CAMERA_USING_GC0308
+#define BSP_CAMERA_SCCB_SDA_PIN 15
+#define BSP_CAMERA_SCCB_SDA0_PIN 0
+#define BSP_CAMERA_SCCB_SCLK_PIN 14
+#define BSP_CAMERA_CMOS_RST_PIN 13
+#define BSP_CAMERA_CMOS_VSYNC_PIN 12
+#define BSP_CAMERA_CMOS_PWDN_PIN 11
+#define BSP_CAMERA_CMOS_XCLK_PIN 9
+#define BSP_CAMERA_CMOS_PCLK_PIN 8
+#define BSP_CAMERA_CMOS_HREF_PIN 10
 /* end of Hardware Drivers Config */
 #define __STACKSIZE__ 4096
 #define RT_AI_USE_K210
@@ -453,6 +465,8 @@
 /* mpy-extmods */
 
 #define PRJ_USING_EXTMODS_MISC
+#define EXTMODS_MISC_USING_K210
+#define EXTMODS_K210_DVP
 #define PRJ_USING_RT_AK_EXMODS
 /* end of mpy-extmods */
 

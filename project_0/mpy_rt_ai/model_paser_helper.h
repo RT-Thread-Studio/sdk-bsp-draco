@@ -19,6 +19,7 @@ extern "C" {
 #include <rt_ai.h>
 #include <backend_k210_kpu.h>
 rt_ai_t backend_k210_kpu_constructor_helper(void *buffer, char *name);
+void backend_k210_kpu_kmodel_free(rt_ai_t handle);
 size_t inputs_size(rt_ai_t handle);
 size_t outputs_size(rt_ai_t handle);
 size_t inputs_n_bytes(rt_ai_t handle, size_t index);

@@ -19,6 +19,7 @@
 #include "py/runtime.h"
 
 #include <backend_k210_kpu.h>
+#include "nncase.h"
 
 rt_ai_t backend_k210_kpu_constructor_helper(void *buffer, char *name){
 
@@ -36,6 +37,36 @@ rt_ai_t backend_k210_kpu_constructor_helper(void *buffer, char *name){
     backend_k210_kpu((void*)new_k210_kpu);
 
     return handle;
+}
+
+void backend_k210_kpu_kmodel_free(rt_ai_t handle){
+    kpu_model_free(&(((k210_kpu_t)handle)->task));
+    handle->flag = 0;
+    return;
+}
+
+size_t inputs_size(rt_ai_t handle){
+    kpu_model_context_t _ctx = ((k210_kpu_t)handle)->task;
+    kpu_model_context_t *ctx = &_ctx;
+    return km_inputs_size(ctx);
+}
+
+size_t outputs_size(rt_ai_t handle){
+    kpu_model_context_t _ctx = ((k210_kpu_t)handle)->task;
+    kpu_model_context_t *ctx = &_ctx;
+    return km_outputs_size(ctx);
+}
+
+size_t inputs_n_bytes(rt_ai_t handle, size_t index){
+    kpu_model_context_t _ctx = ((k210_kpu_t)handle)->task;
+    kpu_model_context_t *ctx = &_ctx;
+    return km_inputs_n_bytes(ctx, index);
+}
+
+size_t outputs_n_bytes(rt_ai_t handle, size_t index){
+    kpu_model_context_t _ctx = ((k210_kpu_t)handle)->task;
+    kpu_model_context_t *ctx = &_ctx;
+    return km_outputs_n_bytes(ctx, index);
 }
 
 #endif
