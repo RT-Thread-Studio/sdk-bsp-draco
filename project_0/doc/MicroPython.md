@@ -235,7 +235,67 @@ snapshot()
 
 return :  Image对象 
 
-注意: 当开启OpenMV时, 该类将失效. 将使用`sensor`类代替. camera方法返回的Image类仅具有少量图像处理方法, 和OpenMV中的Image并非同一个类.
+**注意:** 当开启OpenMV时, 该类将失效. 将使用`sensor`类代替. camera方法返回的Image类仅具有少量图像处理方法, 和OpenMV中的Image并非同一个类.
+
+### k210.Image
+
+k210.Image为摄像头采集返回的图像格式, 包含了针对k210定制的相关处理函数. 主要用于`RGB565` (用于LCD显示) 和`RGB888 CHW`(用于AI输入) 格式的处理和转换. 
+
+**注意:** 该Image与**OpenMV**中的Image对象不同. 在Draco开发板上当使能了OpenMV时, 将自动禁用该类. 转而使用OpenMV的图像处理库.
+
+#### image.width()
+
+返回以像素计的图像的宽度。
+
+#### image.height()
+
+返回以像素计的图像的高度。
+
+#### image.format()
+
+返回用于灰度图的 `sensor.GRAYSCALE` 、用于RGB图像的 `sensor.RGB565` 和用于JPEG图像的 `sensor.JPEG` 。
+
+#### image.size()
+
+返回以字节计的图像大小。
+
+#### image.get_pixel(x, y[, rgbtuple])
+
+灰度图：返回(x, y)位置的灰度像素值。
+
+RGB565l：返回(x, y)位置的RGB888像素元组(r, g, b)。
+
+Bayer图像: 返回(x, y)位置的像素值。
+
+不支持压缩图像。
+
+#### image.set_pixel(x, y, pixel)
+
+灰度图：将`(x, y)` 位置的像素设置为灰度值 pixel 。 RGB图像：将`(x, y)` 位置的像素设置为RGB888元组`(r, g, b)` pixel 。 对于bayer模式图像:将位置`(x, y)`的像素值设置为 pixel。
+
+返回image对象，这样你可以使用 . 符号调用另一个方法。
+
+x 和 y 可以独立传递，也可以作为元组传递。
+
+pixel 可以是 `RGB888` 元组 (r, g, b) 或底层像素值（即 RGB565 图像的字节反转 RGB565 值或灰度图像的 8 位值。
+
+不支持压缩图像。
+
+#### image.to_rgb565()
+
+用于将图片转换为rgb565格式. 该方法会返回新的图像buffer.
+
+#### image.to_gray()
+
+将图片转换为灰度图格式. 该方法会返回新的图像buffer.
+
+#### image.resize(w, h)
+
+缩放图片宽高为`w` 和`h` . 该方法会返回新的图像buffer.
+
+#### image.crop(y, x, offset_h, offset_w)
+
+从`image`的`(x, y)`起始位置裁剪图片, 裁剪大小为`offset_h`和`offset_w`.
 
 ## OpenMV模块
 
