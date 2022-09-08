@@ -7,7 +7,7 @@ src = []
 
 if GetDepend('PRJ_USING_RT_AK_EXMODS'):
     CPPPATH = [cwd]
-    src = Glob('*.c')
+    src = Glob('*.c') + Glob('*.cpp')
 
 group = DefineGroup('RT-AK-LIB', src, depend = ['PRJ_USING_RT_AK_EXMODS'], CPPPATH = CPPPATH)
 

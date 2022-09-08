@@ -100,9 +100,11 @@
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//.}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//applications/board_config}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//applications}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//driver/camera}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//driver}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/bsp/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/drivers/include}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/nncase/include/runtime}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/nncase/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/utils/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/third_party/xtl/include}&quot;" />
@@ -133,6 +135,10 @@
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt-thread/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt-thread/libcpu/risc-v/common}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt-thread/libcpu/risc-v/k210}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib/backend_plugin_k210}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib/img}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib/include}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib}&quot;" />
                 </option>
                 <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.files.946971245" name="Include files (-include)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.files" useByScannerDiscovery="true" valueType="includeFiles">
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtconfig_preinc.h}&quot;" />
@@ -144,9 +150,11 @@
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//.}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//applications/board_config}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//applications}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//driver/camera}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//driver}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/bsp/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/drivers/include}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/nncase/include/runtime}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/nncase/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/lib/utils/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//packages/kendryte-sdk/kendryte-standalone-sdk/third_party/xtl/include}&quot;" />
@@ -177,6 +185,10 @@
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt-thread/include}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt-thread/libcpu/risc-v/common}&quot;" />
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt-thread/libcpu/risc-v/k210}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib/backend_plugin_k210}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib/img}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib/include}&quot;" />
+                  <listOptionValue builtIn="false" value="&quot;${workspace_loc://${ProjName}//rt_ai_lib}&quot;" />
                 </option>
                 <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.cpp.compiler.include.files.1561956932" name="Include files (-include)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.cpp.compiler.include.files" useByScannerDiscovery="true" valueType="includeFiles">
                   <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtconfig_preinc.h}&quot;" />
