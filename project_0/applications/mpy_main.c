@@ -14,7 +14,7 @@
 #if defined(PKG_USING_MICROPYTHON)
 extern void mpy_main(const char *filename);
 volatile int msh_run = 0;
-int32_t msh_or_python(uint32_t delay_s)
+int32_t enter_python(uint32_t delay_s)
 {
     int i;
     rt_kprintf("type msh to stay msh\n");
@@ -36,7 +36,7 @@ static int msh(int argc, char **argv)
 MSH_CMD_EXPORT(msh, enter msh skip micropython);
 
 #else
-static int32_t msh_or_python(uint32_t delay_s){
+int32_t enter_python(uint32_t delay_s){
     return 0;
 }
 #endif

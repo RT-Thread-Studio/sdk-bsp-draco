@@ -1,64 +1,22 @@
 # RT-AK MicroPython扩展模块
 
-# 简介
+## 简介
 
-该目录为针对[RT-AK](https://github.com/RT-Thread/RT-AK)的MicroPython适配. 建议用户可先对C语言接口使用方法有所了解.
+**RT-AK** 为RT-Thread下提供的一套端侧AI运行框架. 能够对接多种端侧的神经网络推理框架,  提供统一的应用层接口.  该文档为针对[RT-AK](https://github.com/RT-Thread/RT-AK)的MicroPython使用和适配说明. 建议用户可先对C语言接口使用方法有所了解.
 
-- RT-AK MicroPython的代码实现说明: [Module_Design_Description](Module_Design_Description.md)
 - 目前主要针对搭载k210芯片的Draco开发板完成适配. 
 
-# 编译配置说明
+## 编译配置说明
 
-该文件夹加入具有RT-AK C库的工程目录中, 参考文件夹下的`Sconscript`脚本, `SConscript`脚本部分展示如下:
+要是用RT-AK的MicroPython接口, 需要在RT-Thread Studio的Draco开发板工程的RT-Thread Settings中进行配置. 并且需要RT-AK检查工程根路径下是否有`rt_ai_lib`文件夹(C语言库). RT-Thread Settings的配置方式如下: `RT-Thread Settings -> mpy-extmods -> Enable MPY extmods -> Enable RT-AK MPY module` 
 
-```python
-if GetDepend('PRJ_USING_RT_AK_EXMODS'):
-    CPPPATH = [cwd]
-    src = Glob('*.c')
+*k210本身具有片上6M的通用内存, MicroPython运行时会预先从系统中分配一段内存用作MicroPython运行时内存. 对于开启并使用RT-AK MicroPython模块时, 由于k210 sdk运行AI时中会调用`malloc`从系统中分配一定的内存用于AI计算, 因此建议对于MicroPython运行时分配的堆内存不要太大, 以免导致AI初始化失败. 对于MicroPython软件包中的配置选项`Heap size for python run environment` 根据经验可配置为`[600000-1500000]` 之间.*
 
-group = DefineGroup('RT-AK-LIB', src, depend = ['PRJ_USING_RT_AK_EXMODS'], CPPPATH = CPPPATH)
-```
+## RT-AK MicroPython函数使用说明
 
-代码加入编译需要开启`PRJ_USING_RT_AK_EXMODS`宏.
-
-具体配置方法示例:
-在Kconfig中加入`PRJ_USING_RT_AK_EXMODS`, 配置语句如下(以K210平台为例):
-
-```python
-menu "mpy-extmods"
-config PRJ_USING_EXTMODS_MISC
-    bool "Enable MPY extmods"
-    select PKG_USING_MICROPYTHON
-    default y
-
-    if PRJ_USING_EXTMODS_MISC
-        menuconfig EXTMODS_MISC_USING_K210
-            bool "Enable K210 extmods"
-            default y
-
-            if EXTMODS_MISC_USING_K210
-                config EXTMODS_K210_LCDCTL
-                    bool "Enable LCD Control"
-                    default y
-                config EXTMODS_K210_DVP
-                    bool "Enable DVP Camera"
-                    default n
-            endif
-
-        config PRJ_USING_RT_AK_EXMODS
-            bool "Enable RT-AK MPY module"
-            default y
-    endif
-endmenu
-```
-
-# RT-AK MicroPython函数使用说明
-
-## rt_ak模块
+### rt_ak模块
 
 RT-AK的所有python函数包含在`rt_ak`模块中, 使用时应`import rt_ak`. 在python环境下使用`dir(rt_ak)`语句可查看模块所包含的函数名词.
-
-### 成员
 
 #### Model对象
 

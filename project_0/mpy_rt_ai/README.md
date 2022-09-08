@@ -8,7 +8,9 @@
 
 ## 编译配置说明
 
+要是用RT-AK的MicroPython接口, 需要在RT-Thread Studio的Draco开发板工程的RT-Thread Settings中进行配置. 并且需要RT-AK检查工程根路径下是否有`rt_ai_lib`文件夹(C语言库). RT-Thread Settings的配置方式如下: `RT-Thread Settings -> mpy-extmods -> Enable MPY extmods -> Enable RT-AK MPY module` 
 
+*k210本身具有片上6M的通用内存, MicroPython运行时会预先从系统中分配一段内存用作MicroPython运行时内存. 对于开启并使用RT-AK MicroPython模块时, 由于k210 sdk运行AI时中会调用`malloc`从系统中分配一定的内存用于AI计算, 因此建议对于MicroPython运行时分配的堆内存不要太大, 以免导致AI初始化失败. 对于MicroPython软件包中的配置选项`Heap size for python run environment` 根据经验可配置为`[600000-1500000]` 之间.*
 
 ## RT-AK MicroPython函数使用说明
 
@@ -190,6 +192,15 @@ mp_obj_is_type(myobject, &my_type);
 
 ### RT-AK对接MicroPython
 
+**源文件列表:**
+
+| 源文件                 | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| rt_ai_mpython.c/.h     | 该文件为`rt_ak`模块及相关函数主要适配代码                    |
+| moddefs_rt_ai.h        | 该头文件为模块声明文件, 该头文件被`moddefs.user.extmods.h`包含, 用于导入MicroPython |
+| qstrdefs_rt_ai.h       | 标识字符串, 如python中所输入的如变量名、函数名等用字符串进行标识 |
+| model_paser_helper.c/h | 模型解析相关的辅助函数.                                      |
+
 RT-AK本身面向嵌入式平台, 使用C语言开发, 在此基础上扩展了MicroPython作为其开发语言. 本节简要描述RT-AK对接MicroPython的基本框架.
 
 RT-AK本身有如下C语言接口:
@@ -332,13 +343,11 @@ const mp_obj_type_t py_model_type =
 };
 ```
 
-### 源文件及代码介绍
+### 
 
-源文件列表:
-
-| 源文件                 | 说明                                                         |
-| ---------------------- | ------------------------------------------------------------ |
-| rt_ai_mpython.c/.h     | 该文件为`rt_ak`模块及相关函数主要适配代码                    |
-| moddefs_rt_ai.h        | 该头文件为模块声明文件, 该头文件被`moddefs.user.extmods.h`包含, 用于导入MicroPython |
-| qstrdefs_rt_ai.h       | 标识字符串, 如python中所输入的如变量名、函数名等用字符串进行标识 |
-| model_paser_helper.c/h | 模型解析相关的辅助函数.                                      |
+|      |      |
+| ---- | ---- |
+|      |      |
+|      |      |
+|      |      |
+|      |      |

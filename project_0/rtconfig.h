@@ -315,34 +315,6 @@
 /* XML: Extensible Markup Language */
 
 /* end of XML: Extensible Markup Language */
-#define PKG_USING_MICROPYTHON
-
-/* Hardware Module */
-
-#define MICROPYTHON_USING_MACHINE_LCD
-/* end of Hardware Module */
-
-/* System Module */
-
-#define MICROPYTHON_USING_UOS
-#define MICROPYTHON_USING_FILE_SYNC_VIA_IDE
-/* end of System Module */
-
-/* Tools Module */
-
-/* end of Tools Module */
-
-/* Network Module */
-
-/* end of Network Module */
-
-/* User Extended Module */
-
-#define MICROPYTHON_USING_USEREXTMODS
-/* end of User Extended Module */
-#define PKG_MICROPYTHON_HEAP_SIZE 2000000
-#define PKG_USING_MICROPYTHON_V11300
-#define PKG_MICROPYTHON_VER_NUM 0x11300
 /* end of language packages */
 
 /* multimedia packages */
@@ -412,6 +384,26 @@
 
 /* end of entertainment: terminal games and other interesting software packages */
 /* end of miscellaneous packages */
+
+/* Arduino libraries */
+
+
+/* Sensor libraries */
+
+/* end of Sensor libraries */
+
+/* Display libraries */
+
+/* end of Display libraries */
+
+/* Timing libraries */
+
+/* end of Timing libraries */
+
+/* Project libraries */
+
+/* end of Project libraries */
+/* end of Arduino libraries */
 /* end of RT-Thread online packages */
 #define BOARD_K210_EVB
 
@@ -448,7 +440,7 @@
 #define BSP_LCD_X_MAX 240
 #define BSP_LCD_Y_MAX 320
 #define BSP_USING_CAMERA
-#define CAMERA_USING_GC0308
+#define CAMERA_USING_OTHER
 #define BSP_CAMERA_SCCB_SDA_PIN 15
 #define BSP_CAMERA_SCCB_SDA0_PIN 0
 #define BSP_CAMERA_SCCB_SCLK_PIN 14
@@ -464,10 +456,6 @@
 
 /* mpy-extmods */
 
-#define PRJ_USING_EXTMODS_MISC
-#define EXTMODS_MISC_USING_K210
-#define EXTMODS_K210_DVP
-#define PRJ_USING_RT_AK_EXMODS
 /* end of mpy-extmods */
 
 #endif

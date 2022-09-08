@@ -66,9 +66,11 @@ PWM设备模块使用方法参考RT-Thread官方MicroPython文档. Draco开发�
 
 ### machine.WDT
 
-WDT设备模块使用方法参考RT-Thread官方MicroPython文档. Draco开发板上可注册2个, 设备名为"wdt0"和"wdt1"的设备, 因此在`class machine.WDT(id , timeout)` 的id参数可传入`"wdt0"`, `"wdt1"`或者 `0`, `1`来查找和使用wdt设备..
+WDT设备模块使用方法参考RT-Thread官方MicroPython文档. Draco开发板上可注册2个, 设备名为"wdt0"和"wdt1"的设备, 因此在`class machine.WDT(id , timeout)` 的id参数可传入`"wdt0"`, `"wdt1"`或者 `0`, `1`来查找和使用wdt设备.
 
 ### machine.TIMER
+
+Timer设备模块主要使用方法参考RT-Thread官方MicroPython文档. Draco开发板上通过`driver/drv_hw_timer` 可以看到注册的Timer设备有`timer00`, `timer01`, `timer02`, `timer03` `timer10`, `timer11`, `timer12`, `timer13` 其中命名中的数字分别代表设备号和通道号, 例如`timer01` 代表timer的0号设备的1通道.
 
 ## k210模块
 
@@ -121,7 +123,41 @@ k210芯片上提供的一些特定设备都放在k210模块下.
 - func : 取值范围如下:
 
 ```
-['JTAG_TCLK', 'JTAG_TDI', 'JTAG_TMS', 'JTAG_TDO', 'SPI0_D0', 'SPI0_D1', 'SPI0_D2', 'SPI0_D3', 'SPI0_D4', 'SPI0_D5', 'SPI0_D6', 'SPI0_D7', 'SPI0_SS0', 'SPI0_SS1', 'SPI0_SS2', 'SPI0_SS3', 'SPI0_ARB', 'SPI0_SCLK', 'UARTHS_RX', 'UARTHS_TX', 'CLK_SPI1', 'CLK_I2C1', 'GPIOHS0', 'GPIOHS1', 'GPIOHS2', 'GPIOHS3', 'GPIOHS4', 'GPIOHS5', 'GPIOHS6', 'GPIOHS7', 'GPIOHS8', 'GPIOHS9', 'GPIOHS10', 'GPIOHS11', 'GPIOHS12', 'GPIOHS13', 'GPIOHS14', 'GPIOHS15', 'GPIOHS16', 'GPIOHS17', 'GPIOHS18', 'GPIOHS19', 'GPIOHS20', 'GPIOHS21', 'GPIOHS22', 'GPIOHS23', 'GPIOHS24', 'GPIOHS25', 'GPIOHS26', 'GPIOHS27', 'GPIOHS28', 'GPIOHS29', 'GPIOHS30', 'GPIOHS31', 'GPIO0', 'GPIO1', 'GPIO2', 'GPIO3', 'GPIO4', 'GPIO5', 'GPIO6', 'GPIO7', 'UART1_RX', 'UART1_TX', 'UART2_RX', 'UART2_TX', 'UART3_RX', 'UART3_TX', 'SPI1_D0', 'SPI1_D1', 'SPI1_D2', 'SPI1_D3', 'SPI1_D4', 'SPI1_D5', 'SPI1_D6', 'SPI1_D7', 'SPI1_SS0', 'SPI1_SS1', 'SPI1_SS2', 'SPI1_SS3', 'SPI1_ARB', 'SPI1_SCLK', 'SPI_SLAVE_D0', 'SPI_SLAVE_SS', 'SPI_SLAVE_SCLK', 'I2S0_MCLK', 'I2S0_SCLK', 'I2S0_WS', 'I2S0_IN_D0', 'I2S0_IN_D1', 'I2S0_IN_D2', 'I2S0_IN_D3', 'I2S0_OUT_D0', 'I2S0_OUT_D1', 'I2S0_OUT_D2', 'I2S0_OUT_D3', 'I2S1_MCLK', 'I2S1_SCLK', 'I2S1_WS', 'I2S1_IN_D0', 'I2S1_IN_D1', 'I2S1_IN_D2', 'I2S1_IN_D3', 'I2S1_OUT_D0', 'I2S1_OUT_D1', 'I2S1_OUT_D2', 'I2S1_OUT_D3', 'I2S2_MCLK', 'I2S2_SCLK', 'I2S2_WS', 'I2S2_IN_D0', 'I2S2_IN_D1', 'I2S2_IN_D2', 'I2S2_IN_D3', 'I2S2_OUT_D0', 'I2S2_OUT_D1', 'I2S2_OUT_D2', 'I2S2_OUT_D3', 'I2C0_SCLK', 'I2C0_SDA', 'I2C1_SCLK', 'I2C1_SDA', 'I2C2_SCLK', 'I2C2_SDA', 'CMOS_XCLK', 'CMOS_RST', 'CMOS_PWDN', 'CMOS_VSYNC', 'CMOS_HREF', 'CMOS_PCLK', 'CMOS_D0', 'CMOS_D1', 'CMOS_D2', 'CMOS_D3', 'CMOS_D4', 'CMOS_D5', 'CMOS_D6', 'CMOS_D7', 'SCCB_SCLK', 'SCCB_SDA', 'UART1_CTS', 'UART1_DSR', 'UART1_DCD', 'UART1_RI', 'UART1_SIR_IN', 'UART1_DTR', 'UART1_RTS', 'UART1_OUT2', 'UART1_OUT1', 'UART1_SIR_OUT', 'UART1_BAUD', 'UART1_RE', 'UART1_DE', 'UART1_RS485_EN', 'UART2_CTS', 'UART2_DSR', 'UART2_DCD', 'UART2_RI', 'UART2_SIR_IN', 'UART2_DTR', 'UART2_RTS', 'UART2_OUT2', 'UART2_OUT1', 'UART2_SIR_OUT', 'UART2_BAUD', 'UART2_RE', 'UART2_DE', 'UART2_RS485_EN', 'UART3_CTS', 'UART3_DSR', 'UART3_DCD', 'UART3_RI', 'UART3_SIR_IN', 'UART3_DTR', 'UART3_RTS', 'UART3_OUT2', 'UART3_OUT1', 'UART3_SIR_OUT', 'UART3_BAUD', 'UART3_RE', 'UART3_DE', 'UART3_RS485_EN', 'TIMER0_TOGGLE1', 'TIMER0_TOGGLE2', 'TIMER0_TOGGLE3', 'TIMER0_TOGGLE4', 'TIMER1_TOGGLE1', 'TIMER1_TOGGLE2', 'TIMER1_TOGGLE3', 'TIMER1_TOGGLE4', 'TIMER2_TOGGLE1', 'TIMER2_TOGGLE2', 'TIMER2_TOGGLE3', 'TIMER2_TOGGLE4', 'CLK_SPI2', 'CLK_I2C2', 'DRIVING_0', 'DRIVING_1', 'DRIVING_2', 'DRIVING_3', 'DRIVING_4', 'DRIVING_5', 'DRIVING_6', 'DRIVING_7', 'DRIVING_8', 'DRIVING_9', 'DRIVING_10', 'DRIVING_11', 'DRIVING_12', 'DRIVING_13', 'DRIVING_14', 'DRIVING_15']
+['JTAG_TCLK', 'JTAG_TDI', 'JTAG_TMS', 'JTAG_TDO', 'SPI0_D0', 'SPI0_D1', 'SPI0_D2', 
+'SPI0_D3', 'SPI0_D4', 'SPI0_D5', 'SPI0_D6', 'SPI0_D7', 'SPI0_SS0', 'SPI0_SS1', 
+'SPI0_SS2', 'SPI0_SS3', 'SPI0_ARB', 'SPI0_SCLK', 'UARTHS_RX', 'UARTHS_TX', 'CLK_SPI1',
+'CLK_I2C1', 'GPIOHS0', 'GPIOHS1', 'GPIOHS2', 'GPIOHS3', 'GPIOHS4', 'GPIOHS5', 
+'GPIOHS6', 'GPIOHS7', 'GPIOHS8', 'GPIOHS9', 'GPIOHS10', 'GPIOHS11', 'GPIOHS12', 
+'GPIOHS13', 'GPIOHS14', 'GPIOHS15', 'GPIOHS16', 'GPIOHS17', 'GPIOHS18', 'GPIOHS19', 
+'GPIOHS20', 'GPIOHS21', 'GPIOHS22', 'GPIOHS23', 'GPIOHS24', 'GPIOHS25', 'GPIOHS26', 
+'GPIOHS27', 'GPIOHS28', 'GPIOHS29', 'GPIOHS30', 'GPIOHS31', 'GPIO0', 'GPIO1', 'GPIO2', 
+'GPIO3', 'GPIO4', 'GPIO5', 'GPIO6', 'GPIO7', 'UART1_RX', 'UART1_TX', 'UART2_RX', 
+'UART2_TX', 'UART3_RX', 'UART3_TX', 'SPI1_D0', 'SPI1_D1', 'SPI1_D2', 'SPI1_D3', 
+'SPI1_D4', 'SPI1_D5', 'SPI1_D6', 'SPI1_D7', 'SPI1_SS0', 'SPI1_SS1', 'SPI1_SS2', 
+'SPI1_SS3', 'SPI1_ARB', 'SPI1_SCLK', 'SPI_SLAVE_D0', 'SPI_SLAVE_SS', 
+'SPI_SLAVE_SCLK', 'I2S0_MCLK', 'I2S0_SCLK', 'I2S0_WS', 'I2S0_IN_D0', 'I2S0_IN_D1', 
+'I2S0_IN_D2', 'I2S0_IN_D3', 'I2S0_OUT_D0', 'I2S0_OUT_D1', 'I2S0_OUT_D2', 
+'I2S0_OUT_D3', 'I2S1_MCLK', 'I2S1_SCLK', 'I2S1_WS', 'I2S1_IN_D0', 'I2S1_IN_D1', 
+'I2S1_IN_D2', 'I2S1_IN_D3', 'I2S1_OUT_D0', 'I2S1_OUT_D1', 'I2S1_OUT_D2', 
+'I2S1_OUT_D3', 'I2S2_MCLK', 'I2S2_SCLK', 'I2S2_WS', 'I2S2_IN_D0', 'I2S2_IN_D1', 
+'I2S2_IN_D2', 'I2S2_IN_D3', 'I2S2_OUT_D0', 'I2S2_OUT_D1', 'I2S2_OUT_D2', 
+'I2S2_OUT_D3', 'I2C0_SCLK', 'I2C0_SDA', 'I2C1_SCLK', 'I2C1_SDA', 'I2C2_SCLK', 
+'I2C2_SDA', 'CMOS_XCLK', 'CMOS_RST', 'CMOS_PWDN', 'CMOS_VSYNC', 'CMOS_HREF', 
+'CMOS_PCLK', 'CMOS_D0', 'CMOS_D1', 'CMOS_D2', 'CMOS_D3', 'CMOS_D4', 'CMOS_D5', 
+'CMOS_D6', 'CMOS_D7', 'SCCB_SCLK', 'SCCB_SDA', 'UART1_CTS', 'UART1_DSR', 'UART1_DCD', 
+'UART1_RI', 'UART1_SIR_IN', 'UART1_DTR', 'UART1_RTS', 'UART1_OUT2', 'UART1_OUT1', 
+'UART1_SIR_OUT', 'UART1_BAUD', 'UART1_RE', 'UART1_DE', 'UART1_RS485_EN', 'UART2_CTS', 
+'UART2_DSR', 'UART2_DCD', 'UART2_RI', 'UART2_SIR_IN', 'UART2_DTR', 'UART2_RTS',
+'UART2_OUT2', 'UART2_OUT1', 'UART2_SIR_OUT', 'UART2_BAUD', 'UART2_RE', 'UART2_DE', 
+'UART2_RS485_EN', 'UART3_CTS', 'UART3_DSR', 'UART3_DCD', 'UART3_RI', 'UART3_SIR_IN', 
+'UART3_DTR', 'UART3_RTS', 'UART3_OUT2', 'UART3_OUT1', 'UART3_SIR_OUT', 'UART3_BAUD', 
+'UART3_RE', 'UART3_DE', 'UART3_RS485_EN', 'TIMER0_TOGGLE1', 'TIMER0_TOGGLE2', 
+'TIMER0_TOGGLE3', 'TIMER0_TOGGLE4', 'TIMER1_TOGGLE1', 'TIMER1_TOGGLE2', 
+'TIMER1_TOGGLE3', 'TIMER1_TOGGLE4', 'TIMER2_TOGGLE1', 'TIMER2_TOGGLE2', 
+'TIMER2_TOGGLE3', 'TIMER2_TOGGLE4', 'CLK_SPI2', 'CLK_I2C2', 'DRIVING_0', 'DRIVING_1', 
+'DRIVING_2', 'DRIVING_3', 'DRIVING_4', 'DRIVING_5', 'DRIVING_6', 'DRIVING_7', 
+'DRIVING_8', 'DRIVING_9', 'DRIVING_10', 'DRIVING_11', 'DRIVING_12', 'DRIVING_13', 
+'DRIVING_14', 'DRIVING_15']
 ```
 
 **例程:**
@@ -229,11 +265,9 @@ pwm.init(0,1000,0)
 
 设置图像大小 
 
-snapshot() 
+`snapshot()` 
 
-获取单幅图像 
-
-return :  Image对象 
+采集图像, **该函数在K210上将返回一个`list` 包含2副图像`[Image_rgb565, Image_rgb888]`** 
 
 **注意:** 当开启OpenMV时, 该类将失效. 将使用`sensor`类代替. camera方法返回的Image类仅具有少量图像处理方法, 和OpenMV中的Image并非同一个类.
 
@@ -297,8 +331,19 @@ pixel 可以是 `RGB888` 元组 (r, g, b) 或底层像素值（即 RGB565 图像
 
 从`image`的`(x, y)`起始位置裁剪图片, 裁剪大小为`offset_h`和`offset_w`.
 
-## OpenMV模块
+# OpenMV模块
 
 Draco开发板上移植适配了OpenMV图像处理库, OpenMV使用参考: 
 
 [OpenMV图像处理的方法 · OpenMV中文入门教程](https://book.openmv.cc/image/)
+
+## Draco开发板OpenMV使用注意事项
+
+* OpenMV中自带了摄像头驱动, 在开启OpenMV时, 需要将RT-Thread Settings中`硬件 ->Enable Camera -> Select camera type` 配置选择为`Camera using other` 选项, 关闭`driver` 下的摄像头驱动. 否则会报重复定义的错误.
+* 备注: K210上OpenMV`snapshot()`函数 **该函数在K210上将返回一个`list` 包含2副图像`[Image_rgb565, Image_rgb888]`** 如下:
+
+```python
+img1, img2 = sensor.snapshot()
+# img1为RGB565用于LCD显示, img2位RGB888用于AI输入
+```
+

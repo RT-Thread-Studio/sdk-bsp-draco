@@ -10,13 +10,13 @@
 
 #include <rtthread.h>
 #include <stdio.h>
-extern int32_t msh_or_python(uint32_t delay_s);
+extern int32_t enter_python(uint32_t delay_s);
 int main(void)
 {
     rt_kprintf("Hello, world\n");
 
     /* enter msh or python, default python if enable mpy, type msh to msh */
-    msh_or_python(3);
+    enter_python(3);
     return 0;
 }
 
