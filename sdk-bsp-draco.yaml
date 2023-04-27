@@ -27,7 +27,7 @@ chip:
   target_freq: '240000000'
   tx_name: PA9
   uart_name: UART1
-docs: 
+docs:
 - file: documents/kendryte_datasheet.pdf
   title: kendryte_datasheet.pdf
   category: sheet
@@ -39,7 +39,7 @@ features:
 - K210 microcontroller featuring 6M of RAM + 2M of RAM for AI
 - USB OTG with Type-C connector
 - SPI TF Card slot
-- SPI WIFI : rw007
+- SPI WIFI rw007
 - one LED
 - one RGB
 - LCD
@@ -50,13 +50,13 @@ features:
 - tow user Keys
 - Reset Key
 - Boot Key
-- GPIO Respberry Compatible 
+- GPIO Respberry Compatible
 - 128-QSPI Flash
 features_zh:
 - K210 microcontroller featuring 6M of RAM + 2M of RAM for AI
 - USB OTG with Type-C connector
 - SPI TF Card slot
-- SPI WIFI : rw007
+- SPI WIFI rw007
 - one LED
 - one RGB
 - LCD
@@ -67,11 +67,11 @@ features_zh:
 - tow user Keys
 - Reset Key
 - Boot Key
-- GPIO Respberry Compatible 
+- GPIO Respberry Compatible
 - 128-QSPI Flash
 pkg_type: Board_Support_Packages
 pkg_vendor: KENDRYTE
-pkg_version: 1.0.10
+pkg_version: 1.0.11
 template_projects:
 - builtin_files:
   - files_and_folders:
@@ -85,7 +85,7 @@ template_projects:
     - extmods
     - images
     - mpy_rt_ai
-    - rt_ai_lib 
+    - rt_ai_lib
     - Kconfig
     - link.lds
     - link_stacksize.lds
@@ -94,7 +94,6 @@ template_projects:
     - moddefs.user.extmods.h
     - qstrdefs.user.extmods.h
     - README.md
-    - rt-thread
     - samples
     - third_party
     - rtconfig.h
@@ -119,7 +118,23 @@ template_projects:
     source_path_offset: ''
     target_path_offset: ''
     files_and_folders: []
+  - files_and_folders:
+    - components
+    - include
+    - libcpu/risc-v
+    - libcpu/Kconfig
+    - libcpu/SConscript
+    - src
+    - tools
+    - Kconfig
+    - LICENSE
+    package_name: RT-Thread
+    package_type: RT-Thread_Source_Code
+    package_vendor: ''
+    package_version: 4.1.1
+    source_path_offset: ''
+    target_path_offset: rt-thread
   project_description: ''
   project_name: project0
-  project_type: rt-thread|@full|@latest
+  project_type: rt-thread|@full|@4.1.1
 yaml_version: 3
