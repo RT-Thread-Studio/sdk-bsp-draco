@@ -9,3 +9,11 @@ size_t get_free_heap_size(void)
 
     return total - used;
 }
+
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(4, 1, 0))
+extern int cmd_free(int argc, char **argv);
+void list_mem(void)
+{
+    cmd_free(0, 0);
+}
+#endif

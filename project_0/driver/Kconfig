@@ -77,43 +77,17 @@ menuconfig BSP_USING_UART3
     endif
 endmenu
 
-config BSP_USING_I2C0
-    bool "Enable I2C0"
-    select RT_USING_I2C
-    default n
-    if BSP_USING_I2C0
-        config BSP_I2C0_SCL_PIN
-            int "I2C0 SCL pin number"
-            default 18
-        config BSP_I2C0_SDA_PIN
-            int "I2C0 SDA pin number"
-            default 19
-    endif
-
 config BSP_USING_I2C1
-    bool "Enable I2C1"
+    bool "Enable I2C1(mpu6050:GPIO36/37)"
     select RT_USING_I2C
     default n
     if BSP_USING_I2C1
         config BSP_I2C1_SCL_PIN
             int "I2C1 SCL pin number"
-            default 0
+            default 36
         config BSP_I2C1_SDA_PIN
             int "I2C1 SDA pin number"
-            default 1
-    endif
-
-config BSP_USING_I2C2
-    bool "Enable I2C2"
-    select RT_USING_I2C
-    default n
-    if BSP_USING_I2C2
-        config BSP_I2C2_SCL_PIN
-            int "I2C2 SCL pin number"
-            default 3
-        config BSP_I2C2_SDA_PIN
-            int "I2C2 SDA pin number"
-            default 4
+            default 37
     endif
 
 menuconfig BSP_USING_SPI1
